@@ -1,9 +1,9 @@
 # Write your solution here!
 
 # determine valid bill/coin values
-# calculate change required
 # check for edge cases
 # check for special cases?
+# calculate change required
 # iterate from largest to smallest
 # generate output string
 # ensure proper grammar in output
