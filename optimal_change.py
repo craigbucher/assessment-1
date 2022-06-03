@@ -9,8 +9,6 @@
 def optimal_change(cost, amount_paid):
     cost = float("{:.2f}".format(cost))
     amount_paid = float("{:.2f}".format(amount_paid))
-    #create result variable
-    change = ''
     #map currency options to values
     values = {
     '$100 bill': 100,
@@ -22,21 +20,26 @@ def optimal_change(cost, amount_paid):
     'quarter': .25,
     'dime': .10,
     'nickel': .5,
-    'penny': .1,
+    'penny': .01,
     }
     # edge cases:
     if cost <= 0:
         return (f'An item with a price of ${cost} is free!')  
     # determine change required:
     change = amount_paid - cost
-    remainder = change
     # iterate to determine optimal change:
-    #while remainder > 0
+    currency = {}
 
     for i in values:
-        while remainder >= values[i]:
-            change += str(i)
-            remainder -= values[i]
-    return(change)
+        while change >= values[i]:
+            #print(i)
+            if i in currency:
+                currency[i] += 1
+            else:
+                currency[i] = 1
+            change -= values[i]
+    return(currency)
+
+    
 
 print(optimal_change(75, 100))

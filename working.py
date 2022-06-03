@@ -1,5 +1,5 @@
-def optimal_change(num):
-    number_map = {
+def optimal_change(change):
+    values = {
     '$100 bill': 100,
     '$50 bill': 50,
     '$20 bill': 20,
@@ -9,15 +9,20 @@ def optimal_change(num):
     'quarter': .25,
     'dime': .10,
     'nickel': .5,
-    'penny': .1,
+    'penny': .01,
     }
     # create output variable
-    result = ''
+    #result = {}
+    currency = {}
     # loop over map
-    for i in number_map:
-        while num >= number_map[i]:
-            result += i
-            num -= number_map[i]
-    return(result)
+    for i in values:
+        while change >= values[i]:
+            #print(i)
+            if i in currency:
+                currency[i] += 1
+            else:
+                currency[i] = 1
+            change -= values[i]
+    return(currency)
 
-print(optimal_change(25))
+print(optimal_change(22.35))
