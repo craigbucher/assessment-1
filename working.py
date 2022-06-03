@@ -17,7 +17,7 @@ def optimal_change(change):
     # loop over map
     for i in values:
         while change >= values[i]:
-            #print(i)
+            print(change)
             if i in currency:
                 currency[i] += 1
             else:

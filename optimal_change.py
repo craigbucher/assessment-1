@@ -49,13 +49,13 @@ def optimal_change(cost, amount_paid):
                 currencies[k + 's'] = currency[k]
 
     #generate output string
-    cost = '{:.2f}'.format(cost)
-    amount_paid = '{:.2f}'.format(amount_paid)
     output = f'The optimal change for an item that costs ${cost} with an amount paid of ${amount_paid} is '
     ## iterate over currencies and append to output
     for k, v in currencies.items():
-        output = output + f'{v} {k}, '
-    
+        if k != list(currencies.keys())[-1]:
+            output = output + f'{v} {k}, '
+        else:
+            output = output + f'and {v} {k}.'
     
     return(output)
 
@@ -64,3 +64,4 @@ print(optimal_change(31.51, 50))
 # issues - pluralizing keys
 # sub-type for penny/pennies
 # variable length output string
+# algorithm undercounts pennies by one (rounding error?)
