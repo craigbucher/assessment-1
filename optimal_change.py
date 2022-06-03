@@ -60,7 +60,7 @@ def optimal_change(cost, amount_paid):
     
     return(output)
 
-print(optimal_change(.01, 1))
+#print(optimal_change(.01, 1))
 
 # issues - pluralizing keys
 # sub-type for penny/pennies
