@@ -17,8 +17,8 @@ def optimal_change(cost, amount_paid):
     '$1 bill': 1,
     'quarter': .25,
     'dime': .10,
-    'nickel': .5,
-    'penn': .01,
+    'nickel': .05,
+    'penny': .009,
     }
     # edge cases:
     if cost <= 0:
@@ -29,22 +29,23 @@ def optimal_change(cost, amount_paid):
     # iterate to determine optimal change:
     currency = {}
     for i in values:
-        while change >= values[i]:
+        while change > values[i]:
             if i in currency:
                 currency[i] += 1
             else:
                 currency[i] = 1
             change -= values[i]
+            
     currencies = {}
-    # iterate over currency dictionary to check for plural
+    # iterate over currency dictionary to check for plurality
     for k, v in currency.items():
         if v == 1:
             currencies[k] = currency[k]
         else:
-            if k == 'penn':
+            if k == 'penny':
                 currencies['pennies'] = v
                 currencies[k + 's'] = currency[k]
-                currencies.pop('penns')
+                currencies.pop('pennys')
             else:
                 currencies[k + 's'] = currency[k]
 
@@ -59,7 +60,7 @@ def optimal_change(cost, amount_paid):
     
     return(output)
 
-print(optimal_change(31.51, 50))
+print(optimal_change(.01, 1))
 
 # issues - pluralizing keys
 # sub-type for penny/pennies
