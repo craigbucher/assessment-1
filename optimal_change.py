@@ -1,10 +1,12 @@
 # Write your solution here!
-# calculate change required
+
 # determine valid bill/coin values
-# iterate from largest to smallest
+# calculate change required
 # check for edge cases
 # check for special cases?
-# ensure proper grammer in output
+# iterate from largest to smallest
+# generate output string
+# ensure proper grammar in output
 
 def optimal_change(cost, amount_paid):
     #map currency options to values
@@ -25,9 +27,9 @@ def optimal_change(cost, amount_paid):
         return (f'An item with a price of ${cost} is free!')  
     # determine change required:
     change = amount_paid - cost
-    #print(change)
+    currency = {} # dictionary for required coins/bills
+
     # iterate to determine optimal change:
-    currency = {}
     for i in values:
         while change > values[i]:
             if i in currency:
@@ -36,7 +38,7 @@ def optimal_change(cost, amount_paid):
                 currency[i] = 1
             change -= values[i]
             
-    currencies = {}
+    currencies = {} # dictionary for plural currencies
     # iterate over currency dictionary to check for plurality
     for k, v in currency.items():
         if v == 1:
@@ -51,6 +53,7 @@ def optimal_change(cost, amount_paid):
 
     #generate output string
     output = f'The optimal change for an item that costs ${cost} with an amount paid of ${amount_paid} is '
+    
     ## iterate over currencies and append to output
     for k, v in currencies.items():
         if k != list(currencies.keys())[-1]:
