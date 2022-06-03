@@ -7,8 +7,6 @@
 # ensure proper grammer in output
 
 def optimal_change(cost, amount_paid):
-    cost = float("{:.2f}".format(cost))
-    amount_paid = float("{:.2f}".format(amount_paid))
     #map currency options to values
     values = {
     '$100 bill': 100,
@@ -27,19 +25,26 @@ def optimal_change(cost, amount_paid):
         return (f'An item with a price of ${cost} is free!')  
     # determine change required:
     change = amount_paid - cost
+    #print(change)
     # iterate to determine optimal change:
     currency = {}
-
     for i in values:
         while change >= values[i]:
-            #print(i)
             if i in currency:
                 currency[i] += 1
             else:
                 currency[i] = 1
             change -= values[i]
-    return(currency)
+    currencies = {}
+    # iterate over currency dictionary to check for plural
+    for k, v in currency.items():
+        if v > 1:
+            currencies[k] = currency[k]
+    print(currencies)
 
-    
+    #generate output string
 
-print(optimal_change(75, 100))
+
+    #return(currencies)
+
+print(optimal_change(0, 50))

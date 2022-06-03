@@ -25,4 +25,4 @@ def optimal_change(change):
             change -= values[i]
     return(currency)
 
-print(optimal_change(22.35))
+print(optimal_change(18.49))
